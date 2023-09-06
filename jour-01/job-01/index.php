@@ -19,7 +19,7 @@ function my_str_search(string $haystack, string $needle): int {
     return $count;
 }
 
-$result = my_str_search("La Plateforme", "e");
+$result = my_str_search("La Plateforme", "o");
 echo $result;
 
 ?>
