@@ -17,7 +17,8 @@ function my_str_reverse(string $str): string {
     return $result;
 }
 
-$reversedStr = my_str_reverse("Hello");
-echo $reversedStr; 
+
+echo my_str_reverse("Hello");
+
 
 ?>
