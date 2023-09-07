@@ -1,6 +1,7 @@
 <?php
 
-function insert_student(string $email, string $fullname, string $gender, string $birthdate, int $gradeId){
+function insert_student(string $email, string $fullname, string $gender, DateTime $birthdate, int $gradeId){
+        
         
         $db = new PDO('mysql:host=localhost;dbname=lp_official;charset=utf8', 'root', 'root');
         $query = 'INSERT INTO student (email, fullname, gender, birthdate, grade_id) VALUES (:email, :fullname, :gender, :birthdate, :grade_id)';
@@ -9,7 +10,7 @@ function insert_student(string $email, string $fullname, string $gender, string 
             ':email' => $email,
             ':fullname' => $fullname,
             ':gender' => $gender,
-            ':birthdate' => $birthdate,
+            ':birthdate' => $birthdate->format('Y-m-d'),
             ':grade_id' => $gradeId
         ]);
         
@@ -22,9 +23,10 @@ if(isset($_POST["submit"])){
     $inputGender = $_POST["input-gender"];
     $inputBirthdate = $_POST["input-birthdate"];
     $inputGradeId = $_POST["input-grade_id"];
+
     $birthdate = new DateTime($inputBirthdate);
 
-    insert_student($inputEmail, $inputFullname, $inputGender, $birthdate->format('Y-m-d'), $inputGradeId);
+    insert_student($inputEmail, $inputFullname, $inputGender, $birthdate, $inputGradeId);
     header("Location: " . $_SERVER['PHP_SELF']);
     exit();
 }
@@ -97,7 +99,7 @@ if(isset($_POST["submit"])){
         <input type="date" name="input-birthdate" id="birthdate" required>
         <label for="grade">Grade</label>
         <input type="number" name="input-grade_id" id="grade" required>
-        <input type="submit" name="submit" value="Submit">
+        <input type="submit" name="submit" value="submit">
     </form>
 </body>
 </html>
