@@ -9,8 +9,8 @@ function find_one_student(string $email) : array{
     return $student;
 }
 
-if(isset($_GET['email'])) {
-    $student = find_one_student($_GET['email']);
+if(isset($_GET['input-email-student'])) {
+    $student = find_one_student($_GET['input-email-student']);
 
 }
 
@@ -82,7 +82,7 @@ if(isset($_GET['email'])) {
 <body>
     <form action="" method="GET">
         <label for="email">Email</label>
-        <input type="email" name="email" id="email">
+        <input type="email" name="input-email-student" id="email">
         <input type="submit" value="Search">
     </form>
 
