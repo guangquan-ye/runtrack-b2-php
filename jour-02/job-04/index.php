@@ -7,14 +7,14 @@ function find_all_students_grade($grade_id) {
     $stmt->bindParam(':grade_id', $grade_id, PDO::PARAM_INT);
     $stmt->execute();
     $students = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
     // echo '<pre>';
     // var_dump($students);
     // echo '</pre>';
     return $students;
 }
 
-$all_students = find_all_students_grade(3);
+$all_students = find_all_students_grade(1);
 ?>
 <!DOCTYPE html>
 <html lang="en">
